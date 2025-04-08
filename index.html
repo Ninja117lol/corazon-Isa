@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Te amo Isabella</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: pink;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .heart-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      cursor: pointer;
+      transform: scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    .heart {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: red;
+      clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 80%, 20% 100%, 0% 35%);
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+
+    .message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      color: white;
+      font-size: 20px;
+      text-align: center;
+      transition: transform 0.5s ease;
+    }
+
+    .heart-container.open .message {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .heart-container.open .heart {
+      animation: none;
+      background: darkred;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart-container" onclick="toggleHeart()">
+    <div class="heart"></div>
+    <div class="message">Te amo Isabella</div>
+  </div>
+
+  <script>
+    function toggleHeart() {
+      document.querySelector('.heart-container').classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>
